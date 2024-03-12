@@ -24,6 +24,11 @@ public class Futil {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        File file = new File(outputFileName);
+        if (file.exists())
+            file.delete();
+
         files.build()
                 .map(f -> {
                     try (var fis = new FileInputStream(f)) {
