@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 public class Futil {
@@ -40,7 +41,7 @@ public class Futil {
                         throw new RuntimeException(e);
                     }
                 })
-                .map(bb->{
+                .map(bb -> {
                     bb.flip();
                     var cb = CharBuffer.allocate(bb.remaining());
                     var decoder = Charset.forName("Cp1250").newDecoder();
