@@ -18,9 +18,9 @@ import java.net.http.HttpResponse;
 
 public class Service {
     private final Country country;
+    private final Nbp nbp;
 
     public Service(String country){
-        //od javy 11 http request
         try (var client = HttpClient.newHttpClient()){
             var request = HttpRequest.newBuilder(new URI("https://restcountries.com/v3.1/name/"+country))
                     .GET()
@@ -28,6 +28,8 @@ public class Service {
             var response = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
             this.country = new Country(new ObjectMapper().readTree(response));
             System.out.println(this.country);
+            this.nbp = new Nbp(this.country.currency());
+            System.out.println(this.nbp.getRate());
         } catch (URISyntaxException | IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
