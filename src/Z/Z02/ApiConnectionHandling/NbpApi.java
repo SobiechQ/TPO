@@ -18,6 +18,9 @@ public class NbpApi implements ApiCallable<NbpApi.NbpData> {
     public NbpApi(String currencyCode) {
         this.currencyCode = currencyCode;
     }
+    public NbpApi(CountryApi.CountryData countryData) {
+        this(countryData.currency());
+    }
     public record NbpData(String code, double rate) {}
 
 

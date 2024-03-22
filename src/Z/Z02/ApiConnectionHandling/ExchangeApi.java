@@ -11,6 +11,9 @@ public class ExchangeApi implements ApiCallable<ExchangeApi.ExchangeData> {
         this.currencyCodeFrom = currencyCodeFrom;
         this.currencyCodeTo = currencyCodeTo;
     }
+    public ExchangeApi(CountryApi.CountryData currencyCodeFrom, String currencyCodeTo) {
+        this(currencyCodeFrom.currency(), currencyCodeTo);
+    }
 
     @Override
     public String getApiEndpoint() {
