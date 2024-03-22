@@ -7,15 +7,12 @@
 package Z.Z02;
 
 
-import java.util.Currency;
-import java.util.Locale;
-import java.util.spi.CurrencyNameProvider;
+import Z.Z02.GUI.MainFrame;
+
+import javax.swing.*;
 
 public class Main {
-  public static void main(String[] args) {
-    Service s = new Service("Canada"); //klasa currency
-    String weatherJson = s.getWeather("Warsaw");
-    Double rate1 = s.getRateFor("USD");
-    Double rate2 = s.getNBPRate();
+  public static void main(String[] args) throws Exception {
+    SwingUtilities.invokeLater(MainFrame::new);
   }
 }
